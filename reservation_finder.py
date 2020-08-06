@@ -16,6 +16,7 @@ import _keys
 
 #wildcat will need to specify loop
 ##GLOBALS## 
+# The campsite ID comes after 'campsites' in the recreation.gov link. EG, here it's 67184: https://www.recreation.gov/camping/campsites/67184
 campground_ids = {
 	#recreation.gov id: [campground name, loop name]
     232069: ["lone pine", None],
@@ -72,7 +73,7 @@ def merge_dicts(existing, new, campground_id):
     return existing
 
 def get_campground_metadata(campground_data):
-    #What's the output i want to see?
+    #campground_metadata
     # -campground name
     # -campground id
     # -campsite (site is different from campsite id)
@@ -116,7 +117,6 @@ def collect_and_parse_campground_data(campground_ids, start_date, end_date):
 #{campground_id:{campsite_id: [dates]}}
 
 def get_specific_days(campground_dates, check_in=4, check_out=6, num_weeks=1):
-    #this is a kind of complicated problem that I should logic out. 
     #i'm basically looking for subranges of consecutive dates within the dates 'bag'
     #loop just once; setting a temp for the previous 'good date' found
     #then if the next date is just one day ahead, and less than the checkout weekday, it's added to the dict, and
